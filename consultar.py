@@ -24,3 +24,14 @@ def alter_table(sql,datos):
     finally:
         conn.close()
 
+def search_table(sql, datos):
+    conn = conectar()
+    cursor = conn.cursor()
+    try:
+        cursor.execute(sql, datos)
+        resultados = cursor.fetchall()
+        return resultados
+    except Exception as e:
+        return f"Error: {e}"
+    finally:
+        conn.close()
